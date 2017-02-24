@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20170223021739) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "unit_id"
-    t.datetime "starting"
-    t.datetime "ending"
+    t.integer  "user_id",    null: false
+    t.integer  "unit_id",    null: false
+    t.datetime "starting",   null: false
+    t.datetime "ending",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["unit_id"], name: "index_bookings_on_unit_id", using: :btree

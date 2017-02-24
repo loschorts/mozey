@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+	validates :user_id, :unit_id, :starting, :ending, presence: true
 	validate :availability
 	validate :dates
 	belongs_to :user
