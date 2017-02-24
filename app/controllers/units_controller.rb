@@ -69,6 +69,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.fetch(:unit, {})
+      params.fetch(:unit, {}).permit(:serial)
     end
 end

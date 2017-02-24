@@ -1,5 +1,6 @@
 class Booking < ApplicationRecord
 	validate :availability
+	validate :dates
 	belongs_to :user
 	belongs_to :unit
 
@@ -31,7 +32,13 @@ class Booking < ApplicationRecord
 			.where("starting between ? and ? or ending between ? and ?", starting, ending, starting, ending)
 	end
 
+	private 
+
 	def availability	
-		errors.add(:schedule_conflict, "One or more overlapping bookings already scheduled") unless overlapping_requests.empty?
+		errors.add(:dates, "One or more overlapping bookings already scheduled") unless overlapping_requests.empty?
+	end
+
+	def dates
+		errors.add(:dates, "Starting date must be before Ending date") unless starting < ending
 	end
 end

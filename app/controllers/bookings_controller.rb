@@ -69,6 +69,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.fetch(:booking, {})
+      params.fetch(:booking, {}).permit(:user_id, :unit_id, :starting, :ending)
     end
 end

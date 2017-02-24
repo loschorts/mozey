@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>User</th>
+      <th>Unit</th>
+      <th>Starting</th>
+      <th>Ending</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% object.bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.id %></td>
+        <td><%= link_to booking.user.email, user_path(booking.user) %></td>
+        <td><%= link_to booking.unit.serial, unit_path(booking.unit) %></td>
+        <td><%= booking.starting %></td>
+        <td><%= booking.ending %></td>
+        <td><%= link_to 'Show', booking %></td>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -12,28 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %>
-    <%= f.text_field :id %>
-  </div>
-
-  <div class="field">
     <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= select("booking", "user_id", User.all.collect {|p| [ p.email, p.id ] }, {include_blank: true}) %>
   </div>
 
   <div class="field">
-    <%= f.label :unit_id %>
-    <%= f.text_field :unit_id %>
+    <%= f.label :vehicle_id %>
+    <%= select("booking", "unit_id", Unit.all.collect {|p| [ p.serial, p.id ] }, {include_blank: true}) %>
   </div>
 
   <div class="field">
     <%= f.label :starting %>
-    <%= f.text_field :starting %>
+    <%= date_field("booking", "starting") %>
   </div>
 
   <div class="field">
     <%= f.label :ending %>
-    <%= f.text_field :ending %>
+    <%= date_field("booking", "ending") %>
   </div>
 
   <div class="actions">
