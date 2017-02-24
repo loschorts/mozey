@@ -39,6 +39,8 @@ class Booking < ApplicationRecord
 	end
 
 	def dates
-		errors.add(:dates, "Starting date must be before Ending date") unless starting < ending
+		if starting && ending
+			errors.add(:dates, "Starting date must be before Ending date") unless starting < ending
+		end
 	end
 end
