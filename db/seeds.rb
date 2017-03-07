@@ -17,7 +17,7 @@ end
 
 10.times do 
 		Unit.create({
-			serial: Faker::Vehicle.vin[0..6]
+			serial: Faker::Vehicle.vin[0..6],
 			city: cities.sample
 		})
 end
