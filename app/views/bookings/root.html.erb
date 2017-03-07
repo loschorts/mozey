@@ -1,0 +1,14 @@
+<h1> Select a city to start booking </h1>
+<%= 
+link_to(
+	"San Francisco", 
+	new_city_booking_path(City.find_by(name: "San Francisco"))
+	) 
+%>
+<br>
+<%= 
+link_to(
+	"Los Angeles", 
+	new_city_booking_path(City.find_by(name: "Los Angeles"))
+	) 
+%>

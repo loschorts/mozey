@@ -1,3 +1,10 @@
+<%
+ city_header = city ? " for #{city.name}" : ""
+ units = city ? Unit.where(city: city) : Unit.all
+%>
+
+<h1>New Booking<%= city_header ? city_header : "" %></h1>
+
 <%= form_for(booking) do |f| %>
   <% if booking.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +25,7 @@
 
   <div class="field">
     <%= f.label :vehicle_id %>
-    <%= select("booking", "unit_id", Unit.all.collect {|p| [ p.serial, p.id ] }, {include_blank: true}) %>
+    <%= select("booking", "unit_id", units.collect {|p| [ p.serial, p.id ] }, {include_blank: true}) %>
   </div>
 
   <div class="field">

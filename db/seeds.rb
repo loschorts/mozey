@@ -6,8 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times {User.create({email: Faker::Internet.email})}
-10.times {Unit.create({serial: Faker::Vehicle.vin[0..6]})}
+City.create({name: "San Francisco"})
+City.create({name: "Los Angeles"})
+
+cities = City.all
+
+10.times do 
+	User.create({email: Faker::Internet.email})
+end
+
+10.times do 
+		Unit.create({
+			serial: Faker::Vehicle.vin[0..6]
+			city: cities.sample
+		})
+end
 100.times do 
 	starting = Faker::Date.between(1.year.ago, 1.year.from_now)
 	ending = starting + rand(30)

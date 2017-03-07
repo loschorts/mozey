@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @city = City.find(params[:city_id]) if params[:city_id]
   end
 
   # GET /bookings/1/edit
