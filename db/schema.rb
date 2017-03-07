@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307192500) do
+ActiveRecord::Schema.define(version: 20170307201451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20170307192500) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "object_type"
+    t.integer  "object_id"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["object_type", "object_id"], name: "index_locations_on_object_type_and_object_id", using: :btree
   end
 
   create_table "units", force: :cascade do |t|
